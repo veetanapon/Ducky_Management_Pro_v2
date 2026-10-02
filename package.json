@@ -1,0 +1,19 @@
+{
+  "name": "ducky-management-v2",
+  "version": "0.1.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite web --host 0.0.0.0",
+    "build": "vite build web --base=./ --outDir ../dist --emptyOutDir",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.117.2",
+    "@fontsource/noto-sans-thai": "5.3.0"
+  },
+  "devDependencies": {
+    "vite": "7.3.1",
+    "@electric-sql/pglite": "0.3.14"
+  }
+}
