@@ -1,5 +1,5 @@
 /* Navigation/control layer inspired by Apple HIG. Content remains flat. */
-:root{--glass-fill:rgba(248,251,248,.82);--glass-edge:rgba(255,255,255,.85);--glass-blur:22px;--glass-radius:28px;--control-size:44px;--nav-inset:12px;--nav-width:98px;--nav-height:82px}
+:root{--glass-fill:rgba(248,251,248,.82);--glass-edge:rgba(255,255,255,.85);--glass-blur:22px;--glass-radius:28px;--control-size:44px;--nav-inset:12px;--nav-width:56px;--nav-height:82px}
 .ui-icon{width:24px;height:24px;flex:none;display:block}
 .glass-surface{background:var(--glass-fill);border:1px solid var(--glass-edge);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(150%);backdrop-filter:blur(var(--glass-blur)) saturate(150%);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 3px 18px rgba(25,55,43,.10)}
 .app-nav{position:fixed;z-index:30;display:flex;padding:6px;gap:3px;border-radius:var(--glass-radius)}
@@ -21,11 +21,12 @@
 }
 @media(orientation:landscape){
  main{margin:0;padding:calc(24px + env(safe-area-inset-top)) calc(var(--nav-width) + 36px + env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) calc(24px + env(safe-area-inset-left));max-width:none}
- .app-nav{right:calc(var(--nav-inset) + env(safe-area-inset-right));top:50%;transform:translateY(-50%);width:var(--nav-width);max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));flex-direction:column;overflow-y:auto;scrollbar-width:thin}
- .app-nav .nav-more{display:none}.app-nav .nav-item{flex-shrink:0;min-height:58px}
+ .app-nav{right:calc(var(--nav-inset) + env(safe-area-inset-right));bottom:calc(var(--nav-inset) + env(safe-area-inset-bottom));width:var(--nav-width);flex-direction:column;padding:5px;gap:4px;max-height:calc(100dvh - 90px);overflow-y:auto}
+ .app-nav .nav-secondary{display:none}.app-nav .nav-more{display:flex}.app-nav .nav-item{width:44px;height:44px;min-height:44px;padding:10px;flex:none;border-radius:50%}
+ .app-nav .nav-label{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
  #toast{left:calc((100% - var(--nav-width) - 24px)/2)}
 }
-@media(orientation:landscape) and (max-height:500px){.app-nav .nav-item{min-height:48px;padding:5px}.app-nav .ui-icon{width:20px;height:20px}.app-nav{--nav-width:86px}}
+@media(orientation:landscape) and (max-height:360px){.app-nav .nav-primary:not(.selected){display:none}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass-surface{background:#f5f9f5}}
 @media(prefers-reduced-transparency:reduce),(prefers-contrast:more){.glass-surface{background:#f5f9f5;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:#9baea2;box-shadow:none}.nav-item{color:#234c3b}}
 @media(prefers-reduced-motion:reduce){.nav-item:active,.icon-button:active{transform:none}}
