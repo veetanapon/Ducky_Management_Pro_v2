@@ -1,6 +1,6 @@
 let branding={name:'ฟาร์ม',logo:'./farm-logo.png'};
 export function getBranding(){return branding}
-export async function loadBranding(db,data){branding={name:data.branding?.[0]?.farm_name||db.config?.farmName||'ฟาร์ม',logo:'./farm-logo.png'};try{const r=await db.getImage('logo');if(r.data)branding.logo=r.data}catch{/* Older databases still show the default logo. */}}
+export async function loadBranding(db,data){branding={name:data.userBranding?.[0]?.farm_name||data.branding?.[0]?.farm_name||db.config?.farmName||'ฟาร์ม',logo:'./farm-logo.png'};try{const r=await db.getImage('logo');if(r.data)branding.logo=r.data}catch{/* Older databases still show the default logo. */}}
 export async function compressImage(file,kind){
  if(!file||!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('เลือกภาพ JPG, PNG หรือ WebP');
  if(file.size>10*1024*1024)throw Error('รูปต้นฉบับต้องไม่เกิน 10 MB');

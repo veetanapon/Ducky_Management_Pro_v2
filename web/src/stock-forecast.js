@@ -1,7 +1,7 @@
 import {shift} from './farm-model.js';
 import {centralStock,allocationStock} from './supply-model.js';
 const n=x=>Number(x||0);
-const product=(name,unit,kg)=>({key:JSON.stringify([String(name||'ไม่ระบุ').trim(),kg>0?'kg':unit||'หน่วย']),name:name||'ไม่ระบุ',unit:kg>0?'กก.':unit||'หน่วย',factor:kg>0?Number(kg):1});
+const product=(name,unit,kg)=>({key:JSON.stringify([String(name||'ไม่ระบุ').trim(),unit||'หน่วย',Number(kg)||null]),name:name||'ไม่ระบุ',unit:unit||'หน่วย',factor:1});
 // Forecast on quantities only, never debt balances or money. Missing dates are not zero consumption.
 export function feedForecast(data,today,batchId=null){
  const map=new Map(),orders=new Map(data.orders.map(o=>[o.id,o])),allocations=new Map((data.allocations||[]).map(a=>[a.id,a]));

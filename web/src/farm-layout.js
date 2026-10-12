@@ -1,7 +1,7 @@
 // ย้ายชื่อ section ระหว่าง left/right หรือเรียงใหม่ได้ที่นี่ โดยไม่แก้ HTML/CSS รายส่วน
 // จอแคบจะเรียงคอลัมน์ left ก่อน right; ไม่ควรใส่ section เดียวซ้ำสองฝั่ง
 export const farmLayouts={
- batches:{left:['batch-summary','lot-stock','production','trends'],right:['pending','week-summary','checks']},
+ batches:{left:['batch-summary','lot-stock','production','trends'],right:['pending','checks','week-summary']},
  eggs:{left:['egg-calendar','egg-detail'],right:['egg-summary','egg-factors']},
  sales:{left:['sales'],right:['sale-summary']},
  feed:{left:['feed-stock','feed-history'],right:['feed-pending','feed-trends','feed-returns']},
@@ -10,7 +10,7 @@ export const farmLayouts={
 export const panelTitles={
  'batch-summary':'ล็อตสัตว์','lot-stock':'คลังของเล้านี้','production':'ผลผลิตและภาพรวมสะสม',trends:'แนวโน้ม 28 วัน',pending:'งานรอดำเนินการ','week-summary':'สรุปช่วง 7 วัน',checks:'สิ่งที่ควรตรวจวันนี้',
  'egg-calendar':'ปฏิทินไข่รายวัน','egg-detail':'รายละเอียดวันที่เลือก','egg-summary':'สรุปเดือนที่เลือก','egg-factors':'ปัจจัยร่วมในเดือนนี้',
- sales:'บิลขายของล็อต','sale-summary':'ยอดขายและรอตรวจ','feed-stock':'คลังอาหารของล็อต','feed-history':'ประวัติการกินอาหาร',
+ sales:'บิลขายของล็อต','sale-summary':'ยอดขายและรอตรวจ','feed-stock':'คลังของล็อต','feed-history':'ประวัติการกินอาหาร',
  'feed-pending':'รอยืนยันการกินอาหาร','feed-trends':'แนวโน้มอาหาร','feed-returns':'อาหารคืนคลังกลาง',events:'เหตุการณ์และชุดกิจกรรม','event-summary':'สรุปเหตุการณ์'
 };
-export function arrangeFarmPanels(root,page){const layout=farmLayouts[page],zones=root.querySelectorAll('.farm-workspace>.zone');if(!layout||zones.length!==2)return;const panels=new Map([...root.querySelectorAll('[data-farm-panel]')].map(el=>[el.dataset.farmPanel,el]));for(const[index,side]of ['left','right'].entries())for(const key of layout[side])if(panels.has(key)){zones[index].append(panels.get(key));panels.delete(key)}}
+export function arrangeFarmPanels(root,page){const layout=farmLayouts[page],zones=root.querySelectorAll('.farm-workspace>.zone');if(!layout||zones.length!==2)return;const panels=new Map([...root.querySelectorAll('[data-farm-panel]')].map(el=>[el.dataset.farmPanel,el]));for(const[index,side]of ['left','right'].entries())for(const key of layout[side])if(panels.has(key)){const panel=panels.get(key);if(key==='checks'){const body=document.createElement('details');body.innerHTML='<summary>แสดง / ซ่อนรายละเอียด</summary>';while(panel.children.length>1)body.append(panel.children[1]);panel.append(body)}zones[index].append(panel);panels.delete(key)}}

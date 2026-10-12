@@ -1,0 +1,4 @@
+export const featureNames={'farm.batches':'ข้อมูลล็อต','farm.eggs':'ไข่รายวัน','farm.sales':'บิลขาย','farm.inventory':'คลังและอาหาร','farm.events':'เหตุการณ์','farm.report':'รายงานสรุป','farm.links':'จัดการ link & LIFF','finance.cash':'บัญชีรับจ่าย','finance.wallets':'กระเป๋าเงิน','finance.plans':'สมมติฐานและแผน','finance.tax':'บันทึกภาษี'};
+export const moduleAllowed=(s,m,w=false)=>['home','settings'].includes(m)||!!s.context?.is_admin||!!s.context?.modules?.[m]?.[w?'write':'read'];
+export const featureAllowed=(s,f,w=false)=>!!s.context?.is_admin||(moduleAllowed(s,f.split('.')[0],w)&&s.context?.features?.[f]?.[w?'write':'read']!==false);
+export const batchAllowed=(s,id,m)=>!!s.context?.is_admin||!!s.context?.batch_rights?.[id]?.[m];

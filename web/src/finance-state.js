@@ -1,0 +1,6 @@
+import {sortBatches} from './batch-choice.js';
+import {select,option} from './feed-ui.js';
+import {monthPicker,bindMonthPicker} from './workspace-tools.js';
+export const financeState={batch:'',month:''};
+export function prepareFinance(data,today){financeState.month||=today.slice(0,7);if(!data.context.funds.some(x=>x.id===financeState.batch))financeState.batch=sortBatches(data.batches.filter(b=>data.context.funds.some(f=>f.id===b.id)))[0]?.id||'';return financeState}
+export function mountFinanceControls(root,ctx){prepareFinance(ctx.data,ctx.today);root.innerHTML=`<div class="farm-context farm-selection">${select('ล็อตที่กำลังดู','finance_batch',ctx.data.context.funds.map(x=>option(x.id,x.name+' • '+(ctx.data.batches.find(b=>b.id===x.id)?.species_id==='fish'?'ปลา':'เป็ด'))).join(''))}<p>ตัวเลือกนี้ใช้ร่วมกับสมุดเงิน สรุป ภาษี และแผน · กระเป๋าเป็นของบัญชีคุณ ยอดคงเหลือแสดงทั้งหมด ประวัติกรองตามเดือน</p></div><div class="farm-month-row">${monthPicker(financeState.month,'financeMonth')}</div>`;const el=root.querySelector('[name=finance_batch]');el.value=financeState.batch;el.onchange=()=>{financeState.batch=el.value;ctx.selectBatch(el.value)};bindMonthPicker(root,'financeMonth',m=>{financeState.month=m;ctx.render()})}

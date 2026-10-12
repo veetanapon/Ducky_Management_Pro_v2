@@ -1,4 +1,4 @@
-export const money=n=>new Intl.NumberFormat('th-TH',{maximumFractionDigits:0}).format(Number(n)||0);
+export const money=n=>new Intl.NumberFormat('th-TH',{maximumFractionDigits:2}).format(Number(n)||0);
 export function dateUTC(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s))throw Error('วันที่ไม่ถูกต้อง');const d=new Date(s+'T00:00:00Z');if(!Number.isFinite(+d)||d.toISOString().slice(0,10)!==s)throw Error('วันที่ไม่ถูกต้อง');return d}
 export function addDays(s,n){if(!Number.isInteger(+n)||+n<0||+n>3650)throw Error('วันเครดิตต้องอยู่ระหว่าง 0–3650');const d=dateUTC(s);d.setUTCDate(d.getUTCDate()+Number(n));return d.toISOString().slice(0,10)}
 export const daysBetween=(a,b)=>Math.round((dateUTC(b)-dateUTC(a))/86400000);
