@@ -1,11 +1,11 @@
 {
   "name": "ducky-management-v2",
-  "version": "0.14.6",
+  "version": "0.15.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite web --host 0.0.0.0",
-    "build": "vite build web --base=./ --outDir ../dist --emptyOutDir",
+    "build": "vite build web --base=./ --outDir ../dist --emptyOutDir && node scripts/precache.mjs",
     "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {

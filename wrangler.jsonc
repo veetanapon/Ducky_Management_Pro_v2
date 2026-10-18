@@ -1,0 +1,14 @@
+{
+  "name": "ducky-management-v2",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "main": "worker/index.js",
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
+  }
+}
