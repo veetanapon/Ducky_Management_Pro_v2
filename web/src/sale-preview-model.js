@@ -19,7 +19,7 @@ export function buildSalePreview(values, ownItems, extraItems = []) {
       display_name:item.display_name || item.grade || {egg:'ไข่',duck:'เป็ด',fish:'ปลา'}[type],
       entry:{stacks:item.stacks||0,trays:item.trays||0,pieces:item.pieces||0}};
   };
-  if (!ownItems.length) throw Error('เพิ่มรายการขายของเล้านี้ก่อน');
+  if (!ownItems.length && !extraItems.length) throw Error('เพิ่มรายการขายอย่างน้อย 1 รายการจากเล้านี้หรือเล้าอื่น');
   const own = ownItems.map(normalize), extra = extraItems.map((x,i)=>normalize(x,own.length+i)), items = [...own,...extra];
   const sum = list => round(list.reduce((n,x)=>n+x.total,0));
   return {sale:{id:'preview',sale_date:values.log_date,buyer:values.buyer,note:values.note||'',sale_type:type,

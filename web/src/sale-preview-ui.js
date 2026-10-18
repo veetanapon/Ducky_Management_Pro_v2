@@ -12,6 +12,14 @@ export function mountSalePreview({dialog:d,form,batch,read,db,toast,initialItems
   const input=(label,key,step='0.01')=>`<label>${label}<input data-key="${key}" type="number" min="0" step="${step}" value="0" required></label>`;
   const reset=()=>{extras.querySelector('[data-extra-lines]').replaceChildren()};
   form.elements.sale_type.addEventListener('change',reset);
+  const externalOnly=document.createElement('button');externalOnly.type='button';externalOnly.textContent='สร้างบิลเฉพาะรายการเล้าอื่น';
+  button.before(externalOnly);
+  externalOnly.onclick=()=>{
+    form.querySelector('#saleLines')?.replaceChildren();
+    extras.open=true;
+    if(!extras.querySelector('.external-preview-line'))addExtra();
+    read();
+  };
   const addExtra=(values={})=>{
     const egg=form.elements.sale_type.value==='egg',line=document.createElement('fieldset');line.className='external-preview-line';
     line.innerHTML=`<legend>รายการเล้าอื่น</legend><label>ชื่อรายการ<input data-key="display_name" maxlength="200" required placeholder="เช่น ไข่เป็ด เบอร์ 23"></label><div class="${egg?'equal-three':'equal-two'}">${egg?input('ตั้ง','stacks','1')+input('แผง','trays','1')+input('ฟอง','pieces','1'):input(form.elements.sale_type.value==='fish'?'น้ำหนัก (กก.)':'จำนวน (ตัว)','qty',form.elements.sale_type.value==='fish'?'0.01':'1')}</div><div class="equal-three">${input(egg?'ราคาต่อฟอง':'ราคาต่อหน่วย','unit_price')}${input('ส่วนลด (บาท)','discount')}<label>ยอดเหมารายการ (ถ้ามี)<input data-key="line_total" type="number" min="0" step="0.01"></label></div><button type="button">ลบรายการ</button>`;
