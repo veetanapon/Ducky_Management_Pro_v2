@@ -79,3 +79,8 @@ input,select,textarea,fieldset,label{min-width:0;max-width:100%;box-sizing:borde
 .external-preview-line{margin:12px 0;padding:12px;border:1px solid var(--line);min-width:0}
 .show-sale-preview>[hidden]{display:none!important}
 @media print{.show-sale-preview .sale-preview-controls{display:none!important}.show-sale-preview .sale-preview-pane{margin:0;padding:0}}
+.receipt-export-dialog{width:min(94vw,640px);max-height:88dvh;overflow:auto}
+.receipt-export-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.receipt-export-actions[hidden],.receipt-export-dialog [hidden]{display:none!important}
+.receipt-export-actions a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);color:var(--accent);text-decoration:none}
+.receipt-export-image{display:block;width:100%;height:auto;background:white;-webkit-touch-callout:default!important;-webkit-user-select:auto!important;user-select:auto!important}

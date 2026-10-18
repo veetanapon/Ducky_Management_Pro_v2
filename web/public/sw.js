@@ -1,4 +1,4 @@
-const CACHE='ducky-v2-shell-30';
+const CACHE='ducky-v2-shell-31';
 // The build step replaces this list with all hashed JS, CSS and font assets.
 const PRECACHE=/*__PRECACHE__*/['./','./index.html','./config.js','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(PRECACHE))));
