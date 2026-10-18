@@ -105,6 +105,9 @@ const BillPreview = (() => {
     const remarkReserve = hasRemark ? 96 : 24;
     const thankYouHeight = 34;
     const bottomPadding = helpers.bottomPadding || 42;
+    const extraImage = draft.extra_image ? await loadCanvasImage(draft.extra_image) : null;
+    const extraWidth = extraImage ? Math.min(width * .65, extraImage.width) : 0;
+    const extraHeight = extraImage ? extraImage.height * extraWidth / extraImage.width : 0;
     const discountRows = Number(draft.discount || 0) > 0 ? 2 : 1;
     const height = Math.max(
       320,
@@ -114,7 +117,7 @@ const BillPreview = (() => {
         thankYouHeight +
         (discountRows * lineGap) +
         bottomPadding +
-        34
+        34 + (extraImage ? extraHeight + 24 : 0)
     );
 
     const dpr = Math.min(window.devicePixelRatio || 2, 3);
@@ -230,6 +233,10 @@ const BillPreview = (() => {
       y += 12;
     }
 
+    if (extraImage) {
+      ctx.drawImage(extraImage, (width - extraWidth) / 2, y, extraWidth, extraHeight);
+      y += extraHeight + 24;
+    }
     const thankYouY = Math.min(y, height - padding - 22);
     ctx.textAlign = 'left';
     ctx.font = 'bold 14px "Noto Sans Thai", system-ui';
