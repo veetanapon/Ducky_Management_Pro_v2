@@ -1,0 +1,509 @@
+{
+  "schema_version": "1.0",
+  "image": {
+    "width": 1720,
+    "height": 5289,
+    "filename": "composite.png",
+    "origin": "top-left",
+    "x_axis": "right",
+    "y_axis": "down",
+    "units": "pixels"
+  },
+  "georeferenced": false,
+  "height_note": "Building heights are illustrative visual offsets in image-pixel units, not measured metres.",
+  "features": [
+    {
+      "id": "road",
+      "name": "ถนนภายในฟาร์ม",
+      "name_en": "Access road",
+      "type": "polygon",
+      "points": [
+        [
+          416.77,
+          347.09
+        ],
+        [
+          473.0,
+          347.09
+        ],
+        [
+          506.08,
+          1371.83
+        ],
+        [
+          482.92,
+          2313.94
+        ],
+        [
+          463.08,
+          3437.85
+        ],
+        [
+          439.92,
+          4264.26
+        ],
+        [
+          413.46,
+          4793.16
+        ],
+        [
+          406.85,
+          5150.16
+        ],
+        [
+          602.0,
+          5189.83
+        ],
+        [
+          602.0,
+          5229.5
+        ],
+        [
+          367.15,
+          5189.83
+        ],
+        [
+          370.46,
+          4773.32
+        ],
+        [
+          383.69,
+          4247.73
+        ],
+        [
+          403.54,
+          3404.79
+        ],
+        [
+          423.38,
+          2313.94
+        ],
+        [
+          433.31,
+          1388.36
+        ]
+      ],
+      "color": "#c7c6b6",
+      "height_px": 0,
+      "label_anchor": [
+        344.0,
+        3140.34
+      ],
+      "note": "",
+      "confidence": "visually traced"
+    },
+    {
+      "id": "pond",
+      "name": "บ่อน้ำหลัก",
+      "name_en": "Main pond",
+      "type": "polygon",
+      "points": [
+        [
+          542.46,
+          1398.28
+        ],
+        [
+          1124.62,
+          1424.72
+        ],
+        [
+          1137.85,
+          1586.7
+        ],
+        [
+          1108.08,
+          2056.1
+        ],
+        [
+          1118.0,
+          2571.78
+        ],
+        [
+          1068.38,
+          3117.2
+        ],
+        [
+          1025.38,
+          3636.19
+        ],
+        [
+          998.92,
+          4003.11
+        ],
+        [
+          962.54,
+          4198.14
+        ],
+        [
+          899.69,
+          4264.26
+        ],
+        [
+          668.15,
+          4274.17
+        ],
+        [
+          535.85,
+          4217.98
+        ],
+        [
+          486.23,
+          4105.59
+        ],
+        [
+          502.77,
+          3622.97
+        ],
+        [
+          532.54,
+          3074.23
+        ],
+        [
+          559.0,
+          2578.39
+        ],
+        [
+          572.23,
+          2075.93
+        ],
+        [
+          565.62,
+          1636.28
+        ]
+      ],
+      "color": "#79b8ad",
+      "height_px": 0,
+      "label_anchor": [
+        810.38,
+        2908.95
+      ],
+      "note": "",
+      "confidence": "visually traced"
+    },
+    {
+      "id": "swim-area",
+      "name": "เขตอวนเป็ดว่ายน้ำ",
+      "name_en": "Netted swimming area",
+      "type": "polygon",
+      "points": [
+        [
+          575.54,
+          1408.2
+        ],
+        [
+          1144.46,
+          1431.34
+        ],
+        [
+          1098.15,
+          1616.45
+        ],
+        [
+          1065.08,
+          1818.09
+        ],
+        [
+          1008.85,
+          2056.1
+        ],
+        [
+          840.15,
+          2112.29
+        ],
+        [
+          697.92,
+          2016.43
+        ],
+        [
+          598.69,
+          1870.98
+        ]
+      ],
+      "color": "#64a89d",
+      "height_px": 0,
+      "label_anchor": [
+        833.54,
+        1768.51
+      ],
+      "note": "Traced visible net boundary; shape follows image rather than an ideal circle.",
+      "confidence": "visually traced"
+    },
+    {
+      "id": "coop",
+      "name": "เล้าเป็ด",
+      "name_en": "Duck coop",
+      "type": "polygon",
+      "points": [
+        [
+          529.23,
+          469.4
+        ],
+        [
+          1303.23,
+          466.09
+        ],
+        [
+          1299.92,
+          1385.06
+        ],
+        [
+          985.69,
+          1391.67
+        ],
+        [
+          985.69,
+          1275.97
+        ],
+        [
+          793.85,
+          1275.97
+        ],
+        [
+          793.85,
+          1375.14
+        ],
+        [
+          519.31,
+          1371.83
+        ]
+      ],
+      "color": "#dfd8be",
+      "height_px": 100,
+      "label_anchor": [
+        893.08,
+        895.82
+      ],
+      "note": "",
+      "confidence": "visually traced; role user-confirmed",
+      "floor_count": 1
+    },
+    {
+      "id": "ramp",
+      "name": "ทางลงน้ำ",
+      "name_en": "Duck ramp / pond access",
+      "type": "polygon",
+      "points": [
+        [
+          797.15,
+          1282.58
+        ],
+        [
+          979.08,
+          1282.58
+        ],
+        [
+          979.08,
+          1421.42
+        ],
+        [
+          793.85,
+          1411.5
+        ]
+      ],
+      "color": "#b19c76",
+      "height_px": 12,
+      "label_anchor": [
+        886.46,
+        1355.31
+      ],
+      "note": "Approximate access area at the pond-facing notch; roof obscures details.",
+      "confidence": "visually traced; role user-confirmed"
+    },
+    {
+      "id": "garage-tools",
+      "name": "โรงรถ / เก็บอุปกรณ์ช่าง",
+      "name_en": "Garage / tool storage",
+      "type": "polygon",
+      "points": [
+        [
+          568.92,
+          4449.37
+        ],
+        [
+          734.31,
+          4475.82
+        ],
+        [
+          721.08,
+          4634.49
+        ],
+        [
+          717.77,
+          4723.74
+        ],
+        [
+          516.0,
+          4697.29
+        ],
+        [
+          519.31,
+          4611.35
+        ],
+        [
+          562.31,
+          4611.35
+        ]
+      ],
+      "color": "#8ca091",
+      "height_px": 58,
+      "label_anchor": [
+        631.77,
+        4568.37
+      ],
+      "note": "",
+      "confidence": "visually traced; role user-confirmed",
+      "floor_count": 1
+    },
+    {
+      "id": "house",
+      "name": "บ้านหลัก",
+      "name_en": "Main house",
+      "type": "polygon",
+      "points": [
+        [
+          479.62,
+          4720.43
+        ],
+        [
+          780.62,
+          4756.79
+        ],
+        [
+          770.69,
+          5037.77
+        ],
+        [
+          482.92,
+          5004.72
+        ]
+      ],
+      "color": "#c3b29c",
+      "height_px": 72,
+      "label_anchor": [
+        628.46,
+        4875.8
+      ],
+      "note": "User correction: lower-left building is the house.",
+      "confidence": "visually traced; role user-confirmed",
+      "floor_count": 2
+    },
+    {
+      "id": "garage-2",
+      "name": "โรงรถบ้าน 2",
+      "name_en": "House 2 garage",
+      "type": "polygon",
+      "points": [
+        [
+          876.54,
+          4740.27
+        ],
+        [
+          1015.46,
+          4756.79
+        ],
+        [
+          1018.77,
+          4852.66
+        ],
+        [
+          866.62,
+          4839.44
+        ]
+      ],
+      "color": "#9caaa0",
+      "height_px": 45,
+      "label_anchor": [
+        946.0,
+        4793.16
+      ],
+      "note": "Small roof above House 2; role based on supplied project reference.",
+      "confidence": "visually traced; role user-confirmed",
+      "floor_count": 1
+    },
+    {
+      "id": "house-2",
+      "name": "บ้าน 2 · หลังคาเขียว",
+      "name_en": "House 2 · green roof",
+      "type": "polygon",
+      "points": [
+        [
+          817.0,
+          4849.35
+        ],
+        [
+          1065.08,
+          4869.19
+        ],
+        [
+          1058.46,
+          5130.33
+        ],
+        [
+          800.46,
+          5097.27
+        ]
+      ],
+      "color": "#82a977",
+      "height_px": 65,
+      "label_anchor": [
+        926.15,
+        4991.49
+      ],
+      "note": "User correction: green-roof building at lower-right.",
+      "confidence": "visually traced; role user-confirmed",
+      "floor_count": 2
+    },
+    {
+      "id": "water-pipe",
+      "name": "ท่อน้ำ · แนวประมาณ",
+      "name_en": "Water pipe · approximate",
+      "type": "polyline",
+      "points": [
+        [
+          1333.0,
+          479.32
+        ],
+        [
+          1329.69,
+          1322.25
+        ],
+        [
+          1299.92,
+          2016.43
+        ],
+        [
+          1266.85,
+          2677.56
+        ],
+        [
+          1240.38,
+          3272.57
+        ],
+        [
+          1204.0,
+          3834.53
+        ],
+        [
+          1157.69,
+          4379.95
+        ],
+        [
+          1124.62,
+          4760.1
+        ],
+        [
+          1098.15,
+          5173.3
+        ]
+      ],
+      "color": "#171d19",
+      "height_px": 0,
+      "label_anchor": [
+        1313.15,
+        3388.27
+      ],
+      "note": "Plain black pipe along far-right farm corridor. Parts obscured by trees; interpolated alignment, not a surveyed pipe centerline.",
+      "confidence": "approximate"
+    }
+  ]
+}

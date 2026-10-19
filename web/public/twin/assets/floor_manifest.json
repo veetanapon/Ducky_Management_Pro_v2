@@ -1,0 +1,436 @@
+[
+  {
+    "file": "01_coop_floor1",
+    "feature_id": "coop",
+    "name": "เล้าเป็ด",
+    "floor": 1,
+    "confirmed_total_floors": 1,
+    "image_width": 1600,
+    "image_height": 1400,
+    "source_polygon": [
+      [
+        529.23,
+        469.4
+      ],
+      [
+        1303.23,
+        466.09
+      ],
+      [
+        1299.92,
+        1385.06
+      ],
+      [
+        985.69,
+        1391.67
+      ],
+      [
+        985.69,
+        1275.97
+      ],
+      [
+        793.85,
+        1275.97
+      ],
+      [
+        793.85,
+        1375.14
+      ],
+      [
+        519.31,
+        1371.83
+      ]
+    ],
+    "template_polygon": [
+      [
+        478.04922318978373,
+        272.7893861146524
+      ],
+      [
+        1130.310508005791,
+        270.0
+      ],
+      [
+        1127.5211218911386,
+        1044.4296549190776
+      ],
+      [
+        862.7148382635753,
+        1050.0
+      ],
+      [
+        862.7148382635753,
+        952.4978932129043
+      ],
+      [
+        701.048423691091,
+        952.4978932129043
+      ],
+      [
+        701.048423691091,
+        1036.069923723503
+      ],
+      [
+        469.68949199420905,
+        1033.2805376088506
+      ]
+    ],
+    "image_to_template": {
+      "scale": 0.8427148382635752,
+      "translate": [
+        32.05924933555184,
+        -122.78095896626974
+      ]
+    },
+    "outline_status": "roof footprint from aerial; interior walls unconfirmed",
+    "upper_floor_outline_assumed": false
+  },
+  {
+    "file": "02_garage_tools_floor1",
+    "feature_id": "garage-tools",
+    "name": "โรงรถ / เก็บอุปกรณ์ช่าง",
+    "floor": 1,
+    "confirmed_total_floors": 1,
+    "image_width": 1600,
+    "image_height": 1400,
+    "source_polygon": [
+      [
+        568.92,
+        4449.37
+      ],
+      [
+        734.31,
+        4475.82
+      ],
+      [
+        721.08,
+        4634.49
+      ],
+      [
+        717.77,
+        4723.74
+      ],
+      [
+        516.0,
+        4697.29
+      ],
+      [
+        519.31,
+        4611.35
+      ],
+      [
+        562.31,
+        4611.35
+      ]
+    ],
+    "template_polygon": [
+      [
+        640.1308452090243,
+        270.0
+      ],
+      [
+        1110.3141742901923,
+        345.1940809855296
+      ],
+      [
+        1072.7029194153886,
+        796.2732806064796
+      ],
+      [
+        1063.2929985056678,
+        1050.0
+      ],
+      [
+        489.6858257098079,
+        974.8059190144686
+      ],
+      [
+        499.0957466195282,
+        730.4891205306703
+      ],
+      [
+        621.3394321536609,
+        730.4891205306703
+      ]
+    ],
+    "image_to_template": {
+      "scale": 2.84287640777053,
+      "translate": [
+        -977.2384006997856,
+        -12379.009002441964
+      ]
+    },
+    "outline_status": "roof footprint from aerial; interior walls unconfirmed",
+    "upper_floor_outline_assumed": false
+  },
+  {
+    "file": "03_main_house_floor1",
+    "feature_id": "house",
+    "name": "บ้านหลัก · หลังล่างซ้าย",
+    "floor": 1,
+    "confirmed_total_floors": 2,
+    "image_width": 1600,
+    "image_height": 1400,
+    "source_polygon": [
+      [
+        479.62,
+        4720.43
+      ],
+      [
+        780.62,
+        4756.79
+      ],
+      [
+        770.69,
+        5037.77
+      ],
+      [
+        482.92,
+        5004.72
+      ]
+    ],
+    "template_polygon": [
+      [
+        430.0813008130083,
+        270.0
+      ],
+      [
+        1169.9186991869917,
+        359.370391378332
+      ],
+      [
+        1145.5114388353186,
+        1050.0
+      ],
+      [
+        438.1924749480056,
+        968.7653620722249
+      ]
+    ],
+    "image_to_template": {
+      "scale": 2.4579315560597457,
+      "translate": [
+        -748.7918321043669,
+        -11332.493855171106
+      ]
+    },
+    "outline_status": "roof footprint from aerial; interior walls unconfirmed",
+    "upper_floor_outline_assumed": false
+  },
+  {
+    "file": "04_main_house_floor2",
+    "feature_id": "house",
+    "name": "บ้านหลัก · หลังล่างซ้าย",
+    "floor": 2,
+    "confirmed_total_floors": 2,
+    "image_width": 1600,
+    "image_height": 1400,
+    "source_polygon": [
+      [
+        479.62,
+        4720.43
+      ],
+      [
+        780.62,
+        4756.79
+      ],
+      [
+        770.69,
+        5037.77
+      ],
+      [
+        482.92,
+        5004.72
+      ]
+    ],
+    "template_polygon": [
+      [
+        430.0813008130083,
+        270.0
+      ],
+      [
+        1169.9186991869917,
+        359.370391378332
+      ],
+      [
+        1145.5114388353186,
+        1050.0
+      ],
+      [
+        438.1924749480056,
+        968.7653620722249
+      ]
+    ],
+    "image_to_template": {
+      "scale": 2.4579315560597457,
+      "translate": [
+        -748.7918321043669,
+        -11332.493855171106
+      ]
+    },
+    "outline_status": "roof footprint from aerial; interior walls unconfirmed",
+    "upper_floor_outline_assumed": true
+  },
+  {
+    "file": "05_house2_floor1",
+    "feature_id": "house-2",
+    "name": "บ้าน 2 · หลังคาเขียว",
+    "floor": 1,
+    "confirmed_total_floors": 2,
+    "image_width": 1600,
+    "image_height": 1400,
+    "source_polygon": [
+      [
+        817.0,
+        4849.35
+      ],
+      [
+        1065.08,
+        4869.19
+      ],
+      [
+        1058.46,
+        5130.33
+      ],
+      [
+        800.46,
+        5097.27
+      ]
+    ],
+    "template_polygon": [
+      [
+        478.6226777706597,
+        270.0
+      ],
+      [
+        1167.292333973949,
+        325.0758061071938
+      ],
+      [
+        1148.915225282939,
+        1050.0
+      ],
+      [
+        432.70766602605136,
+        958.225496476618
+      ]
+    ],
+    "image_to_template": {
+      "scale": 2.775998291693363,
+      "translate": [
+        -1789.3679265428182,
+        -13191.787315823212
+      ]
+    },
+    "outline_status": "roof footprint from aerial; interior walls unconfirmed",
+    "upper_floor_outline_assumed": false
+  },
+  {
+    "file": "06_house2_floor2",
+    "feature_id": "house-2",
+    "name": "บ้าน 2 · หลังคาเขียว",
+    "floor": 2,
+    "confirmed_total_floors": 2,
+    "image_width": 1600,
+    "image_height": 1400,
+    "source_polygon": [
+      [
+        817.0,
+        4849.35
+      ],
+      [
+        1065.08,
+        4869.19
+      ],
+      [
+        1058.46,
+        5130.33
+      ],
+      [
+        800.46,
+        5097.27
+      ]
+    ],
+    "template_polygon": [
+      [
+        478.6226777706597,
+        270.0
+      ],
+      [
+        1167.292333973949,
+        325.0758061071938
+      ],
+      [
+        1148.915225282939,
+        1050.0
+      ],
+      [
+        432.70766602605136,
+        958.225496476618
+      ]
+    ],
+    "image_to_template": {
+      "scale": 2.775998291693363,
+      "translate": [
+        -1789.3679265428182,
+        -13191.787315823212
+      ]
+    },
+    "outline_status": "roof footprint from aerial; interior walls unconfirmed",
+    "upper_floor_outline_assumed": true
+  },
+  {
+    "file": "07_garage2_floor1",
+    "feature_id": "garage-2",
+    "name": "โรงรถบ้าน 2",
+    "floor": 1,
+    "confirmed_total_floors": 1,
+    "image_width": 1600,
+    "image_height": 1400,
+    "source_polygon": [
+      [
+        876.54,
+        4740.27
+      ],
+      [
+        1015.46,
+        4756.79
+      ],
+      [
+        1018.77,
+        4852.66
+      ],
+      [
+        866.62,
+        4839.44
+      ]
+    ],
+    "template_polygon": [
+      [
+        365.1988169569504,
+        290.6605323693766
+      ],
+      [
+        1278.245152809728,
+        399.2375944791311
+      ],
+      [
+        1300.0,
+        1029.339467630627
+      ],
+      [
+        300.0,
+        942.45152809727
+      ]
+    ],
+    "image_to_template": {
+      "scale": 6.572461386789354,
+      "translate": [
+        -5395.82648701939,
+        -30864.5810055866
+      ]
+    },
+    "outline_status": "roof footprint from aerial; interior walls unconfirmed",
+    "upper_floor_outline_assumed": false
+  }
+]
