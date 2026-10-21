@@ -8,7 +8,7 @@ data=JSON.parse(JSON.stringify(data));
 const scene=new THREE.Scene(),rootGroup=new THREE.Group();scene.add(rootGroup);rootGroup.scale.z=-1; // Image x increases to screen right when viewed from above, up = -X.
 const layers={terrain:new THREE.Group(),buildings:new THREE.Group(),water:new THREE.Group(),landscape:new THREE.Group(),animals:new THREE.Group(),people:new THREE.Group(),pipe:new THREE.Group(),sensors:new THREE.Group(),interior:new THREE.Group()};Object.values(layers).forEach(g=>rootGroup.add(g));
 const roofs=[],picks=[],actors=[],lamps=[],features={},zones=[];const mats=new Map();
-function mat(c,opts={}){const k=c+JSON.stringify(opts);if(!mats.has(k))mats.set(k,new THREE.MeshStandardMaterial({color:c,roughness:.83,...opts}));return mats.get(k)}
+function mat(c,opts={}){const k=c+JSON.stringify(opts);if(!mats.has(k))mats.set(k,new THREE.MeshStandardMaterial({color:new THREE.Color(c).convertSRGBToLinear(),roughness:.83,...opts}));return mats.get(k)}
 function mesh(geo,color,parent,opts={}){const m=new THREE.Mesh(geo,mat(color,opts));m.castShadow=true;m.receiveShadow=true;(parent||rootGroup).add(m);return m}
 function box(x,y,z,w,h,d,c,parent){const m=mesh(new THREE.BoxGeometry(w,h,d),c,parent);m.position.set(x,y,z);return m}
 function cylinder(x,y,z,r,h,c,parent,r2=r,n=8){const m=mesh(new THREE.CylinderGeometry(r2,r,h,n),c,parent);m.position.set(x,y,z);return m}
@@ -85,7 +85,7 @@ cars.forEach((c,i)=>{c.path=parkingPaths[i];c.g.scale.setScalar(.8);if(i===1)c.g
 function travel(path,u){const lens=path.slice(1).map((p,i)=>Math.hypot(p[0]-path[i][0],p[1]-path[i][1]));let d=Math.max(0,Math.min(1,u))*lens.reduce((a,b)=>a+b,0),i=0;while(i<lens.length-1&&d>lens[i])d-=lens[i++];const a=path[i],b=path[i+1],v=d/lens[i];return{x:a[0]+(b[0]-a[0])*v,z:a[1]+(b[1]-a[1])*v,angle:-Math.atan2(b[1]-a[1],b[0]-a[0])};}
 // Coop workspace, storage and bill desk: raised 0.50 relative to shed floor.
 const platform=[[475,507],[648,507],[648,782],[475,782]];surface(0,platform,.65,'#d5c7a8',ci);poly(points(0,platform),.65,.5,'#c5b690',ci);
-const stock=area(0,'stock-zone','จัดการคลัง',[[490,518],[631,518],[631,587],[490,587]],1.16,'#b9c9a0','#farm/feed','coop',1,'คลังของล็อตสัตว์ บนพื้นยก 50 ซม.');shelf(0,530,550,1.25,stock);shelf(0,595,550,1.25,stock);
+const stock=area(0,'stock-zone','จัดการคลัง',[[490,518],[631,518],[631,587],[490,587]],1.16,'#b9c9a0','#farm/feed','coop',1,'คลังของล็อตสัตว์ บนพื้นยก 50 ซม.');shelf(0,610,550,1.25,stock);
 const bill=area(0,'bill-zone','จัดการขาย',[[591,675],[643,675],[643,776],[591,776]],1.16,'#d9c397','#farm/sales','coop',1,'โต๊ะและเก้าอี้ 1 ชุด');desk(0,615,730,1.25,bill);person(0,620,758,1.25,'#ac8c68',bill);
 for(const [a,b] of [[[475,507],[648,507]],[[475,782],[648,782]],[[648,507],[648,594]],[[648,678],[648,782]]])seg(0,a,b,1.15,1.5,'#ceccb4',ci);
 // Sliding steel panel at road edge; 3.5 high. The ramp is a sloping wedge.
@@ -99,7 +99,12 @@ for(const [x,y] of [[714,760],[795,761],[897,756],[1007,762],[638,861],[727,860]
 for(const [a,b] of [[[581,972],[680,972]],[[588,1014],[683,1014]],[[903,1018],[1071,1018]]]){seg(0,a,b,.7,.32,'#6c9998',ci,.55);seg(0,a,b,1.02,.02,'#8bc6c5',ci,.35);}
 {const q=tp(0,552,992);cylinder(q[0],1.6,q[1],.75,1.8,'#557c85',ci);}
 const waterGate=new THREE.Group();ci.add(waterGate);fence([701,952],[862,952],waterGate);
-for(let i=0;i<12;i++){const q=tp(0,520+(i%3)*28,600+Math.floor(i/3)*14);sphere(q[0],1.4+(i%2)*.25,q[1],.42,i%2?'#efbc50':'#f4d478',ci,[1.2,.65,.8]);}
+// A wall-side pyramid: 6 base sacks, 3 middle sacks, 1 top sack.
+const feedPile=new THREE.Group();stock.add(feedPile);const feedTiers=[];const pileOrigin=tp(0,519,550);feedPile.position.set(pileOrigin[0],1.25,pileOrigin[1]);
+for(let level=0;level<3;level++){const tier=new THREE.Group();feedPile.add(tier);feedTiers.push(tier);const nx=3-level,nz=level===0?2:1;for(let x=0;x<nx;x++)for(let z=0;z<nz;z++){const sack=sphere((x-(nx-1)/2)*.9,.25+level*.48,(z-(nz-1)/2)*.68,.46,level%2?'#edbc4d':'#f2d085',tier,[1.05,.55,.75]);box(sack.position.x,sack.position.y+.22,sack.position.z,.55,.025,.06,'#b58a35',tier);}}
+let feedLevel='unknown';function setFeedStock(bags){feedLevel=Number.isFinite(bags)?bags<=0?'empty':bags<10?'low':bags<30?'medium':'high':'unknown';feedPile.visible=!['unknown','empty'].includes(feedLevel);feedTiers.forEach((g,i)=>g.visible=i<({low:1,medium:2,high:3}[feedLevel]||0));}
+setFeedStock(null);
+
 function setFloor(id,level){if(!interiorViews[id])return;const v=interiorViews[id];v.current=level;for(const [l,g] of Object.entries(v.floors))g.visible=level==='all'||+l<=+level;for(const [l,g] of Object.entries(v.shells))g.visible=level==='all'||+l<+level;roofs.filter(r=>r.userData.building===id).forEach(r=>r.visible=level==='all');}
 function setHourRaw(h){simulationHour=((Number(h)%24)+24)%24;const closed=simulationHour>=23||simulationHour<4;penGate.visible=closed;waterGate.visible=simulationHour<8||simulationHour>=18;gateTarget=closed?0:gateTravel;setNight(simulationHour<6||simulationHour>=18);updateInterior(0);}
 // Time slider switches between two illustrative occupancy states, not a live flock model.
@@ -149,17 +154,32 @@ function updateRaw(t,animate=true){if(!animate)return;updateInterior(t);updateFi
 function setNight(n){sun.intensity=n?.22:1.6;hemi.intensity=n?.38:.9;for(let b of lamps){b.material=mat(n?'#ffdf8c':'#f0e9c7',{emissive:n?'#d9a352':'#000000',emissiveIntensity:n?1.4:0})}scene.background=new THREE.Color(n?'#233c41':'#e9eee3')}
 // Merge meshes within each group/material/id, retaining roof/layer toggles and hit targets.
 function compact(group){for(const child of [...group.children])if(child.isGroup)compact(child);const bins=new Map();for(const o of group.children){if(!o.isMesh||lamps.includes(o)||picks.includes(o))continue;const key=o.material.uuid+'|'+(o.userData.featureId||'');if(!bins.has(key))bins.set(key,[]);bins.get(key).push(o)}for(const objects of bins.values()){if(objects.length<2)continue;let arrays={position:[],normal:[],uv:[]},geos=[];for(const o of objects){o.updateMatrix();let g=o.geometry.index?o.geometry.toNonIndexed():o.geometry.clone();g.applyMatrix4(o.matrix);geos.push(g);for(const k of Object.keys(arrays)){const a=g.getAttribute(k);if(a)arrays[k].push(a.array)}}const geo=new THREE.BufferGeometry();for(const k of Object.keys(arrays)){if(arrays[k].length!==objects.length)continue;let length=arrays[k].reduce((a,b)=>a+b.length,0),a=new Float32Array(length),offset=0;for(const part of arrays[k]){a.set(part,offset);offset+=part.length}geo.setAttribute(k,new THREE.BufferAttribute(a,k==='uv'?2:3))}let merged=new THREE.Mesh(geo,objects[0].material);merged.castShadow=true;merged.receiveShadow=true;merged.userData={...objects[0].userData};objects.forEach(o=>{group.remove(o);o.geometry.dispose()});geos.forEach(g=>g.dispose());group.add(merged)}}
+// Low-poly companion dogs; all route coordinates are outside the coop footprint.
+const dogs=[];
+function makeDog(kind){const g=new THREE.Group();layers.animals.add(g);const black=kind==='labrador',coat=black?'#171a20':'#f6f1e5',patch='#655446';sphere(0,1.1,0,.65,coat,g,[1.6,.9,.7]);sphere(.85,1.55,0,.48,coat,g,[.95,1.05,.9]);sphere(1.22,1.38,0,.33,coat,g,[1.2,.7,.85]);sphere(1.55,1.43,0,.12,'#11151a',g);
+for(const z of [-.28,.28]){if(black){const ear=sphere(.7,1.56,z,.3,coat,g,[.6,1.25,.45]);ear.rotation.z=.25;}else{const ear=mesh(new THREE.ConeGeometry(.25,.65,3),patch,g);ear.position.set(.78,2.04,z);ear.rotation.x=z*.5;sphere(.98,1.62,z,.31,patch,g,[.9,1,.48]);}sphere(1.15,1.7,z*1.27,.055,black?'#bc9b62':'#171b22',g);}
+if(!black){sphere(-.38,1.3,-.42,.48,patch,g,[1.25,.85,.32]);sphere(-.5,1.65,.12,.35,patch,g,[1.5,.3,1]);box(1.14,1.7,0,.12,.63,.15,'#fff9ec',g);}
+const legs=[];for(const x of [-.7,.63])for(const z of [-.32,.32]){const leg=new THREE.Group();g.add(leg);leg.position.set(x,.9,z);box(0,-.35,0,.2,.75,.22,coat,leg);sphere(.09,-.7,0,.17,coat,leg,[1.4,.7,1]);legs.push(leg);}
+const tail=new THREE.Group();g.add(tail);tail.position.set(-.9,1.3,0);if(black){const m=box(-.48,.16,0,1,.16,.17,coat,tail);m.rotation.z=-.25;}else{const m=mesh(new THREE.TorusGeometry(.37,.18,5,8,Math.PI*1.65),coat,tail);m.position.set(-.1,.42,0);m.rotation.y=Math.PI/2;}g.scale.setScalar(.83);dogs.push({g,legs,tail,kind,swimming:false});return g;}
+makeDog('labrador');makeDog('bangkaew');
+const dogLandPath=[[-113,-24],[-70,-24],[-20,-24],[40,-25],[87,-25],[123,-25],[126,-12],[127,10],[104,11],[85,13],[60,15],[30,17],[0,19],[-35,20],[-59,21],[-59,16],[-25,16],[20,13],[60,10],[86,8],[87,-3],[87,-20],[-30,-22],[-113,-24]];
+const dogSwimPath=[[86,-3],[83,-3],[77,-2],[62,-1],[42,1],[22,2],[5,3],[22,5],[45,3],[65,0],[78,-2],[83,-3],[86,-3]];
+function routePoint(path,d){const lengths=[];let total=0;for(let i=1;i<path.length;i++){const l=Math.hypot(mapX(path[i][0])-mapX(path[i-1][0]),path[i][1]-path[i-1][1]);lengths.push(l);total+=l;}let q=((d%total)+total)%total;for(let i=0;i<lengths.length;i++){if(q<=lengths[i]){const a=path[i],b=path[i+1],u=q/lengths[i];return{x:a[0]+(b[0]-a[0])*u,z:a[1]+(b[1]-a[1])*u,heading:-Math.atan2(b[1]-a[1],mapX(b[0])-mapX(a[0]))};}q-=lengths[i];}return{x:path[0][0],z:path[0][1],heading:0};}
+// Both start at the house-side pond bank; Labrador takes a water loop between land circuits.
+const landStart=dogLandPath.findIndex(p=>p[0]===87&&p[1]===-3);const landLoop=[...dogLandPath.slice(landStart),...dogLandPath.slice(1,landStart+1)];landLoop[0]=[86,-3];landLoop[landLoop.length-1]=[86,-3];
+function pathLength(p){return p.slice(1).reduce((n,b,i)=>n+Math.hypot(mapX(b[0])-mapX(p[i][0]),b[1]-p[i][1]),0);}
+function updateDogs(t){const landLength=pathLength(landLoop),swimLength=pathLength(dogSwimPath);dogs.forEach((a,i)=>{let d=t*(i?3.8:4.1)+(i?3:0),p;if(i===0){d%=landLength+swimLength;p=d<landLength?routePoint(landLoop,d):routePoint(dogSwimPath,d-landLength);a.swimming=d>=landLength&&inside([p.x,p.z],pond.ps);}else{p=routePoint(landLoop,d);a.swimming=false;}a.g.position.set(mapX(p.x),a.swimming?.03:.45+Math.sin(t*11+i)*.055,p.z);a.g.rotation.y=p.heading;for(let j=0;j<4;j++)a.legs[j].rotation.z=Math.sin(t*(a.swimming?7:12)+j%2*Math.PI+i)*.6;a.tail.rotation.y=Math.sin(t*8+i)*.4;});}
 const shortening=(pond.maxX-pond.minX)/3;
 function mapX(x){return x<=pond.minX?x:x>=pond.maxX?x-shortening:pond.minX+(x-pond.minX)*2/3;}
 compact(rootGroup);rootGroup.updateMatrixWorld(true);
-const movers=[...cars.map(c=>c.g),...peopleProps,...roadTraffic.map(a=>a.g),...actors.map(a=>a.g)];const excluded=new Set([...movers,aerator.group,fishSchool]);
+const movers=[...cars.map(c=>c.g),...peopleProps,...roadTraffic.map(a=>a.g),...actors.map(a=>a.g)];const excluded=new Set([...movers,aerator.group,fishSchool,...dogs.map(d=>d.g)]);
 rootGroup.traverse(o=>{if(!o.isMesh)return;for(let a=o;a;a=a.parent)if(excluded.has(a))return;const g=o.geometry.clone(),p=g.getAttribute('position'),inv=o.matrixWorld.clone().invert(),v=new THREE.Vector3();for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld);v.x=mapX(v.x);v.applyMatrix4(inv);p.setXYZ(i,v.x,v.y,v.z)}g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();o.geometry=g;});
 aerator.group.position.x=mapX(aerator.group.position.x);
 let mapped=false;function restoreMovers(){if(mapped)for(const g of movers)g.position.x=g.userData.rawX;}
 function mapMovers(){for(const g of movers){g.userData.rawX=g.position.x;g.position.x=mapX(g.position.x)}mapped=true;}
-function update(t,animate=true){if(!animate)return;restoreMovers();updateRaw(t,animate);mapMovers();}
+function update(t,animate=true){if(!animate)return;restoreMovers();updateRaw(t,animate);mapMovers();updateDogs(t);}
 function setHour(h){restoreMovers();setHourRaw(h);mapMovers();}
 const displayFeatures=Object.fromEntries(Object.entries(features).map(([id,f])=>[id,{...f,ps:f.ps.map(p=>[mapX(p[0]),p[1]]),cx:mapX(f.cx),minX:mapX(f.minX),maxX:mapX(f.maxX)}]));for(const z of zones){z.x=mapX(z.x);if(z.worldPolygon)z.worldPolygon=z.worldPolygon.map(p=>[mapX(p[0]),p[1]]);}
-setNight(false);setHour(12);return{shortening,mapX,netPath,setFishLots,fishLots:()=>linkedFish,fishActors:()=>fishActors,setFishCount,fishSchool,waterGate,cars,drivewayPaths,steelGate,aerator,roadTraffic,peopleProps,interiorViews,openingRecords,setFloor,setHour,getSimulation:()=>({hour:simulationHour,fishCount,fishSymbols:fishSchool.count,waterOpen:simulationHour>=8&&simulationHour<18,penClosed:simulationHour>=23||simulationHour<4,cars:cars.map(c=>c.state)}),scene,root:rootGroup,layers,roofs,picks,features:displayFeatures,zones,actors,coord,update,setNight,sun,hemi,water};}
+setNight(false);setHour(12);updateDogs(0);return{dogs,setFeedStock,feedPile,feedTiers,getFeedLevel:()=>feedLevel,shortening,mapX,netPath,setFishLots,fishLots:()=>linkedFish,fishActors:()=>fishActors,setFishCount,fishSchool,waterGate,cars,drivewayPaths,steelGate,aerator,roadTraffic,peopleProps,interiorViews,openingRecords,setFloor,setHour,getSimulation:()=>({hour:simulationHour,fishCount,fishSymbols:fishSchool.count,waterOpen:simulationHour>=8&&simulationHour<18,penClosed:simulationHour>=23||simulationHour<4,cars:cars.map(c=>c.state)}),scene,root:rootGroup,layers,roofs,picks,features:displayFeatures,zones,actors,coord,update,setNight,sun,hemi,water};}
 root.buildDuckyScene=buildDuckyScene;
 })(typeof window!=='undefined'?window:globalThis);
