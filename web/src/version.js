@@ -1,1 +1,1 @@
-export const APP_VERSION='0.15.5-monitor.6';
+export const APP_VERSION='0.15.5-monitor.7';
