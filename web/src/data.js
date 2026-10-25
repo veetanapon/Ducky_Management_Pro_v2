@@ -1,3 +1,4 @@
+import {assignEmployeeCodes} from './staff-model.js';
 import {cacheGet,cachePut,cacheClear,networkFailure,queueAllowed,queueIdentity} from './offline-store.js';
 import {demoWorkerInbox} from './access-service.js';
 import {prepareAccounts,accountDemo} from './accounts.js';
@@ -78,6 +79,6 @@ function cashflowDemoSave(s,p){const old=s.cashflowPlan||{version:0};if(old.vers
 
 // Personnel payloads bypass the generic localStorage retry queue and read cache.
 export async function staffRead(){return live?rpcRaw('staff_registry_read',{}):{...structuredClone(local.staffRegistry||{version:0,document:null}),farms:local.staffFarms||[]}}
-export async function staffSave(p){if(live){if(!navigator.onLine)throw Error('ต้องออนไลน์เพื่อบันทึกข้อมูลบุคลากร');return rpcRaw('staff_registry_save',{p_data:p,p_request:crypto.randomUUID()})}if((local.staffRegistry?.version||0)!==p.version)throw Error('VERSION_CONFLICT');local.staffRegistry={version:p.version+1,document:structuredClone(p.document)};persist();return{version:p.version+1}}
+export async function staffSave(p){if(live){if(!navigator.onLine)throw Error('ต้องออนไลน์เพื่อบันทึกข้อมูลบุคลากร');return rpcRaw('staff_registry_save',{p_data:p,p_request:crypto.randomUUID()})}if((local.staffRegistry?.version||0)!==p.version)throw Error('VERSION_CONFLICT');local.staffRegistry={version:p.version+1,document:assignEmployeeCodes(p.document,local.staffRegistry?.document)};persist();return{version:p.version+1,codes:Object.fromEntries(local.staffRegistry.document.employees.map(e=>[e.id,e.code]))}}
 
 export async function staffFarm(name){if(live)return rpcRaw('staff_farm_create',{p_name:name});local.staffFarms||=[];const row={id:crypto.randomUUID(),name};local.staffFarms.push(row);persist();return{id:row.id,farms:structuredClone(local.staffFarms)}}
