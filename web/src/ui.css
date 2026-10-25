@@ -20,8 +20,8 @@
  #toast{bottom:calc(var(--nav-height) + 20px + env(safe-area-inset-bottom))}
 }
 @media(orientation:landscape){
- main{margin:0;padding:calc(24px + env(safe-area-inset-top)) calc(var(--nav-width) + 36px + env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) calc(24px + env(safe-area-inset-left));max-width:none}
- .app-nav{right:calc(var(--nav-inset) + env(safe-area-inset-right));bottom:calc(var(--nav-inset) + env(safe-area-inset-bottom));width:var(--nav-width);flex-direction:column;padding:5px;gap:4px;max-height:calc(100dvh - 90px);overflow-y:auto}
+ main{margin:0;padding:calc(24px + env(safe-area-inset-top)) calc(var(--nav-width) + 12px + env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) calc(24px + env(safe-area-inset-left));max-width:none}
+ .app-nav{right:max(0px, env(safe-area-inset-right));bottom:calc(var(--nav-inset) + env(safe-area-inset-bottom));width:var(--nav-width);flex-direction:column;padding:5px;gap:4px;max-height:calc(100dvh - 90px);overflow-y:auto}
  .app-nav .nav-secondary{display:none}.app-nav .nav-more{display:flex}.app-nav .nav-item{width:44px;height:44px;min-height:44px;padding:10px;flex:none;border-radius:50%}
  .app-nav .nav-label{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
  #toast{left:calc((100% - var(--nav-width) - 24px)/2)}
