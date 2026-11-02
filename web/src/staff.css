@@ -1,1 +1,39 @@
 .staff-toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:end}.staff-toolbar label{min-width:180px}.staff-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.staff-photo{width:84px;height:84px;object-fit:cover;border-radius:4px}.staff-qr{width:180px;height:180px;object-fit:contain}.staff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;margin:16px 0;border-top:1px solid var(--line);border-left:1px solid var(--line)}.staff-grid>button,.staff-grid>section{display:grid;text-align:left;gap:8px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;padding:16px;background:white;min-width:0;overflow-wrap:anywhere}#personDetail{padding:16px;border-top:1px solid var(--line)}@media(max-width:600px){.staff-fields{grid-template-columns:1fr}.staff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.staff-check{display:flex;align-items:center;gap:8px;padding:8px}.staff-check input,.staff-person-choice input{width:auto}.staff-person-choice{display:grid;grid-template-columns:minmax(140px,1fr) auto auto;gap:12px;padding:8px;border-bottom:1px solid var(--line)}.staff-benefit-table{display:block}.staff-benefit-table>section{display:block}.staff-benefit-table>section>p{display:inline-block;margin:8px 16px 8px 0}.staff-form output{display:block;padding:12px;background:#eff6ef;border-radius:8px}.staff-form fieldset{margin:12px 0}
+/* Staff workspace: one control height, explicit groups, scoped to this module. */
+.staff-workspace{--staff-control:44px;min-width:0}
+.staff-workspace .staff-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 20px;padding:0}
+.staff-workspace .staff-control-group{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+.staff-workspace .staff-toolbar label{display:block;min-width:0;margin:0;padding:0;font-size:0;line-height:0}
+.staff-workspace .staff-toolbar :is(button,select,input){box-sizing:border-box;height:var(--staff-control);min-height:var(--staff-control);margin:0!important;padding:0 14px;font:inherit;font-size:14px;line-height:1.4;border:1px solid var(--line);border-radius:5px;box-shadow:none;vertical-align:middle}
+.staff-workspace .staff-toolbar button{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:#fff;color:inherit}
+.staff-workspace .staff-toolbar select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475850' stroke-width='1.7'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:36px;width:100%;color:inherit}
+.staff-workspace [name=staffFarm]{width:240px!important;max-width:100%}
+.staff-workspace .staff-view-control{margin-left:auto}
+.staff-workspace [name=staffLayout]{width:116px!important}
+.staff-workspace .staff-header{margin-bottom:12px}
+.staff-workspace .staff-tabs{display:flex;gap:24px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:24px;scrollbar-width:thin}
+.staff-workspace .staff-tabs button{flex:0 0 auto;margin:0;padding:10px 2px 12px;height:48px;border:0;border-bottom:2px solid transparent;background:transparent;border-radius:0;box-shadow:none;color:#74827b;font-size:15px;white-space:nowrap}
+.staff-workspace .staff-tabs button[aria-current=page]{border-bottom-color:#275c48;color:#204c3b;font-weight:700}
+.staff-count{font-size:12px;margin-left:4px;font-weight:400}
+.staff-workspace .staff-payroll-toolbar{gap:12px}
+.staff-workspace .staff-payroll-toolbar input{width:166px;max-width:100%;background:white;color:inherit;-webkit-appearance:none}
+.staff-workspace .staff-wallet-actions{margin-left:auto;padding-left:12px;border-left:1px solid var(--line)}
+.staff-workspace .staff-toolbar .staff-primary{background:#275c48;border-color:#275c48;color:#fff}
+.staff-workspace button:focus-visible,.staff-workspace input:focus-visible,.staff-workspace select:focus-visible{outline:2px solid #548e73;outline-offset:3px}
+.staff-workspace .staff-grid{margin:0 0 24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.staff-workspace .staff-salary-grid>section{padding:20px;gap:16px}
+.staff-employee-name{font-size:16px;line-height:1.5}
+.staff-balance{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.staff-balance>span{font-size:13px;color:#718078}.staff-balance>b{font-size:26px;line-height:1.25;font-weight:650;font-variant-numeric:tabular-nums}.staff-balance small{font-size:12px;font-weight:400;color:#718078}
+.staff-salary-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0;padding-top:14px;border-top:1px solid var(--line)}
+.staff-salary-stats dt{font-size:12px;color:#718078}.staff-salary-stats dd{margin:4px 0 0;font-size:15px;font-variant-numeric:tabular-nums}
+.staff-workspace .staff-section-heading{display:flex;align-items:baseline;gap:12px;font-size:17px;margin:28px 0 12px}.staff-section-heading span{font-size:13px;font-weight:400;color:#718078}
+.staff-workspace .table-scroll{margin:0 0 24px;max-width:100%;overflow-x:auto;border-top:1px solid var(--line)}
+.staff-workspace table{width:100%;border-collapse:collapse;font-size:14px}
+.staff-workspace table :is(th,td){padding:14px 12px;vertical-align:middle;text-align:left;border-bottom:1px solid var(--line)}
+.staff-workspace table th{font-size:12px;font-weight:500;color:#718078;white-space:nowrap;background:rgba(255,255,255,.4)}
+.staff-workspace table td[colspan]{color:#718078}
+.staff-workspace details>summary{font-size:14px;padding:12px 0}
+@media(max-width:1100px){.staff-workspace .staff-wallet-actions{margin-left:0}.staff-workspace .staff-payroll-toolbar{column-gap:10px}}
+@media(max-width:600px){.staff-workspace .staff-toolbar{gap:8px}.staff-workspace [name=staffFarm]{width:180px!important}.staff-workspace .staff-header{align-items:center}.staff-workspace .staff-header>.staff-control-group:first-child{flex:1}.staff-workspace .staff-header>.staff-control-group:first-child>label{flex:1}.staff-workspace .staff-header [name=staffFarm]{width:100%!important}.staff-workspace .staff-header #newStaffFarm{padding:0 10px}.staff-workspace [name=staffLayout]{width:96px!important}.staff-workspace .staff-tabs{gap:22px;margin-bottom:18px}.staff-workspace .staff-payroll-toolbar>.staff-control-group{width:100%}.staff-workspace .staff-payroll-toolbar input{width:100%}.staff-workspace .staff-period>label{width:100%}.staff-workspace .staff-pay-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.staff-workspace .staff-pay-actions button{padding:0 8px;font-size:13px}.staff-workspace .staff-wallet-actions{padding:0;border-left:0}.staff-workspace .staff-wallet-actions button{flex:1}.staff-workspace .staff-salary-grid>section{padding:16px}}
