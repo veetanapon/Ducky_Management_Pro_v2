@@ -1,0 +1,6 @@
+import {rpc,live,config} from './data.js';
+export async function attCall(name,args){if(!live)throw Error('การลงเวลาต้องเชื่อม Supabase และรัน SQL 038 ก่อน');if(!navigator.onLine)throw Error('ต้องออนไลน์เพื่อตรวจ QR และยืนยันเวลา');const r=await rpc('attendance_'+name,args);if(r?.error)throw Error(r.error);return r;}
+export const attStorageKey='ducky-attendance-device:'+config.supabaseUrl;
+export function randomSecret(){return [...crypto.getRandomValues(new Uint8Array(32))].map(n=>n.toString(16).padStart(2,'0')).join('')}
+export const attErrors={DEVICE_NOT_APPROVED:'เครื่องนี้ยังไม่อนุมัติหรือถูกเพิกถอน กรุณาติดต่อผู้ดูแล',QR_EXPIRED:'QR หมดอายุแล้ว กรุณาสแกนใหม่',INVITE_EXPIRED:'ลิงก์ลงทะเบียนหมดอายุ ให้ผู้ดูแลสร้างใหม่',INVITE_USED:'ลิงก์นี้ใช้ลงทะเบียนแล้ว',INACTIVE_EMPLOYEE:'พนักงานไม่ได้อยู่ในช่วงประจำการ',WRONG_FARM:'จุดลงเวลาไม่ตรงกับสังกัดหรือรายการเข้างาน',ALREADY_IN:'มีรายการเข้างานอยู่แล้ว',NOT_IN:'ยังไม่มีรายการเข้างาน',INVALID_CODE_OR_PIN:'รหัสพนักงานหรือ PIN ไม่ถูกต้อง',TRY_LATER:'ลองหลายครั้งเกินไป กรุณารอก่อนลองใหม่',KIOSK_QR_ONLY:'จอนี้แสดง QR อย่างเดียว',REQUEST_CONFLICT:'คำขอซ้ำไม่ตรงกับรายการเดิม',INVALID_MANUAL:'ตรวจเวลาและเหตุผลการลงแทน',OVERLAPPING_SESSION:'เวลาทับกับรายการเดิม',INVALID_OPEN_SESSION:'ไม่พบเวลาเข้าที่ตรงกับรายการนี้'};
+export const attError=e=>attErrors[e.message]||e.message;
