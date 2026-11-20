@@ -1,0 +1,79 @@
+/* Shared geometry for the six staff tabs and the dialogs launched by them. */
+.staff-workspace [hidden]{display:none!important}
+.staff-workspace #staffBody{min-width:0;max-width:100%}
+.staff-workspace .staff-toolbar,.staff-workspace .staff-toolbar>.staff-control-group{align-items:flex-end;row-gap:8px}
+.staff-workspace .staff-toolbar label:not(.staff-check){display:grid;gap:4px;font-size:12px;line-height:1.45;color:#51675c}
+.staff-workspace .staff-control-group :is(button,input,select){max-width:100%}
+.staff-workspace .staff-toolbar.staff-filterbar,.staff-workspace .staff-payroll-toolbar{align-items:flex-end;gap:12px 20px;padding:0 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.staff-workspace .staff-actions,.staff-workspace .staff-history-head>:last-child{margin-inline-start:auto}
+.staff-workspace .staff-history-head{align-items:center;justify-content:space-between}
+.staff-workspace .staff-history-head h3,.staff-workspace #staffBody h3{margin-block:14px 10px}
+.staff-workspace .staff-findbar{align-items:center;background:var(--card,#fff);border:1px solid var(--line);padding:8px 12px;border-radius:8px;margin-bottom:8px}
+.staff-workspace .staff-toolbar .staff-check{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:14px;line-height:1.4}
+.staff-workspace .staff-toolbar .staff-check input{width:18px;height:18px;min-height:18px;padding:0;accent-color:#275c48}
+.staff-workspace .staff-findbar>span,.staff-workspace .att-help{font-size:13px;color:#52675e}
+.staff-workspace .table-scroll,.staff-workspace .att-device-table{overflow:auto;max-width:100%;border:1px solid var(--line);border-radius:8px;background:var(--card,#fff)}
+.staff-workspace .table-scroll table{margin:0;width:100%;font-variant-numeric:tabular-nums}
+.staff-workspace .table-scroll th,.staff-choice-list th{background:#f2f6f3;color:#385246;text-align:start}
+.staff-workspace .staff-benefit-matrix{max-height:min(58vh,32rem);isolation:isolate}
+.staff-benefit-matrix th,.staff-benefit-matrix td:first-child{position:sticky;z-index:1}
+.staff-benefit-matrix th{top:0}.staff-benefit-matrix td:first-child,.staff-benefit-matrix th:first-child{left:0;box-shadow:1px 0 var(--line)}
+.staff-benefit-matrix td:first-child{background:white;max-width:14rem}.staff-benefit-matrix th:first-child{z-index:2}
+.staff-benefit-matrix td:not(:first-child){white-space:nowrap}
+.staff-workspace .directory-metrics,.staff-workspace .att-summary{gap:10px;margin-block:0 16px}
+.staff-workspace :is(.att-summary>section,.directory-metrics>div){border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px 16px}
+.staff-workspace .att-summary b,.staff-workspace .directory-metrics strong,.staff-workspace .staff-balance{font-variant-numeric:tabular-nums}
+.staff-workspace .wf-layout>*{min-width:0}
+.staff-workspace .wf-detail{align-self:start}
+.staff-workspace #attReport .att-toolbar{justify-content:flex-end}
+.staff-workspace .directory-filters{align-items:center}
+.work-dialog .staff-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end;gap:12px 16px}
+.work-dialog .staff-form>:not(label){grid-column:1/-1;min-width:0}
+.work-dialog .staff-form>label,.work-dialog .staff-form .staff-fields>label{display:grid;align-content:end;gap:4px;margin:0;min-width:0;font-size:14px;line-height:1.45}
+.work-dialog .staff-form>label>*,.work-dialog .staff-form .staff-fields>label>:is(input,select,button){width:100%;min-width:0;max-width:100%;margin:0;box-sizing:border-box}
+.work-dialog .staff-form p,.work-dialog .staff-form fieldset{margin-block:0}
+.work-dialog .staff-form .staff-form-actions{display:flex;justify-content:flex-end;padding-top:12px;border-top:1px solid var(--line)}
+.work-dialog .staff-form-actions .staff-primary,.staff-wheel-dialog #wheelApply{min-height:44px;background:#275c48;color:#fff;border-radius:6px;padding-inline:20px}
+.staff-form .staff-policy-choice{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:0 12px 0 0}
+.staff-form .staff-choice-list{border:1px solid var(--line);border-radius:6px;min-width:0}
+.staff-choice-list table{width:100%;border-collapse:collapse}.staff-choice-list td small{display:block;color:#53685c}
+.staff-choice-list th{position:sticky;top:0;z-index:1}.staff-choice-list td:not(:nth-last-child(n+3)),.staff-choice-list th:not(:nth-last-child(n+3)){text-align:center}
+.staff-choice-list td input[type=checkbox]{margin:auto}
+.month-picker.month-nav>button.month-open{width:auto;min-width:0;justify-self:center;max-width:100%;min-height:44px;height:auto;border-radius:7px;padding:6px 16px;white-space:normal;background:#fff;color:#204b39;border:1px solid var(--line);box-shadow:none;font-weight:600}
+.work-dialog.staff-wheel-dialog{width:min(92vw,32rem);max-height:90dvh;overflow:auto}
+.staff-wheel-dialog .staff-wheel{box-sizing:border-box;overscroll-behavior-y:contain}
+.staff-wheel-dialog .att-actions{justify-content:flex-end}
+.staff-wheel-dialog button:focus-visible,.staff-wheel-dialog [role=spinbutton]:focus-visible{outline:2px solid #25764e;outline-offset:-2px}
+@media(max-width:700px){
+.staff-workspace .staff-filterbar>.staff-control-group,.staff-workspace .staff-actions,.staff-workspace .staff-pay-actions,.staff-workspace .staff-wallet-actions{flex:1 1 100%;margin-inline-start:0}
+.staff-workspace .staff-filterbar>.staff-control-group:first-child>label{flex:1 1 auto}
+.staff-workspace :is(.staff-filterbar,.staff-findbar) input[type=search]{width:100%;min-width:0;flex:1 1 100%;font-size:16px}
+.staff-workspace .staff-pay-actions,.staff-workspace .staff-wallet-actions{display:flex;flex-wrap:wrap}
+.staff-workspace .staff-header>.staff-control-group:first-child{min-width:min(100%,12rem)}
+.staff-workspace .staff-toolbar button{white-space:normal}
+.staff-workspace .directory-metrics>div,.staff-workspace .att-summary>section{padding:9px;min-width:0}
+.staff-workspace .staff-benefit-matrix td:first-child{max-width:8rem}
+.staff-workspace .att-summary{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.work-dialog .staff-form{grid-template-columns:minmax(0,1fr)}
+.work-dialog .staff-form :is(input:not([type=checkbox]),select){font-size:16px}
+}
+.work-dialog .staff-search-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0}
+.work-dialog .staff-search-row input[type=search]{flex:1 1 14rem;min-width:0;max-width:100%}
+.work-dialog .staff-form .staff-toolbar{align-items:center;margin:0}
+@media(max-width:700px){.work-dialog .staff-search-row input[type=search]{flex-basis:100%}.work-dialog .staff-choice-list table{min-width:25rem}}
+.staff-results{min-width:0;margin-block:0 16px}
+.staff-results-head,.work-dialog .staff-results .staff-search-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin:0;padding:8px 12px;border:1px solid var(--line);border-bottom:0;background:var(--card,#fff);border-radius:6px 6px 0 0}
+.staff-workspace #staffBody .staff-results-head h3{margin:0 auto 0 0;font-size:1rem}
+.staff-results-head input[type=search]{box-sizing:border-box;width:min(100%,21rem);min-width:0;height:44px;margin:0;font-size:16px}
+.staff-results .table-scroll,.staff-results .staff-choice-list{border-top-left-radius:0;border-top-right-radius:0}
+.staff-benefit-matrix td small{display:block;color:#53685c;font-size:.84em}
+.staff-workspace .staff-benefit-matrix td{vertical-align:middle;white-space:normal}
+.staff-benefit-matrix td:nth-child(2){min-width:7rem}
+.benefit-links{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:0 12px}
+.staff-workspace .staff-benefit-matrix th:last-child{text-align:end}
+.staff-workspace .benefit-links button{display:inline-block;border:0;border-radius:0;box-shadow:none;background:transparent;color:#255b46;text-decoration:underline;text-underline-offset:3px;margin:0;padding:4px 2px;min-height:44px;white-space:normal;font:inherit;cursor:pointer}
+.benefit-summary{padding:10px 14px;border-inline-start:3px solid #357055;background:#f3f6f4}
+.benefit-summary strong{display:block;margin-top:4px;font-size:1.1rem}
+.staff-form #afterBenefit[hidden]{display:none}
+.staff-workspace .wf-layout .staff-findbar{margin:0;border-radius:6px 6px 0 0;border-bottom:0}
+@media(max-width:600px){.staff-results-head input[type=search]{flex:1 1 100%}.staff-workspace .staff-benefit-matrix table{min-width:0;width:100%;table-layout:fixed}.staff-benefit-matrix th:first-child{width:30%}.staff-benefit-matrix th:nth-child(2){width:27%}.staff-workspace .staff-benefit-matrix :is(td,th){padding-inline:6px;min-width:0;overflow-wrap:anywhere}.staff-benefit-matrix .benefit-links{gap:0 4px}.work-dialog .staff-results .staff-search-row input{order:1}}

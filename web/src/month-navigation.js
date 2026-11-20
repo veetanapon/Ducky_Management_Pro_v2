@@ -1,0 +1,5 @@
+import {thaiMonth,openMonthWheel,monthCeiling} from './staff-month-wheel.js';
+export {thaiMonth};
+export function shiftMonth(v,n){const index=Number(v.slice(0,4))*12+Number(v.slice(5))-1+n;return String(Math.floor(index/12)).padStart(4,'0')+'-'+String((index%12)+1).padStart(2,'0')}
+export function monthPicker(value,key){return `<div class="month-picker month-nav calendar-tools" data-month-picker="${key}" data-period="${value}"><button type="button" data-shift="-1" aria-label="เดือนก่อน">←</button><button type="button" class="month-open" data-wheel aria-haspopup="dialog">${thaiMonth(value)} ▾</button><button type="button" data-shift="1" aria-label="เดือนถัดไป">→</button></div>`}
+export function bindMonthPicker(root,key,onchange,min='1900-01',max=monthCeiling()){const el=root.querySelector(`[data-month-picker="${key}"]`);if(!el)return;max=max<monthCeiling()?max:monthCeiling();const value=el.dataset.period;el.querySelector('[data-wheel]').onclick=()=>openMonthWheel(value,onchange,min,max);el.querySelectorAll('[data-shift]').forEach(btn=>{const v=shiftMonth(value,Number(btn.dataset.shift));btn.disabled=v<min||v>max;btn.onclick=()=>{if(!btn.disabled)onchange(v)}})}

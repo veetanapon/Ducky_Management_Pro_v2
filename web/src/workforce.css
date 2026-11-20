@@ -1,1 +1,29 @@
 .wf-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.wf-calendar{display:grid;grid-template-columns:repeat(7,minmax(80px,1fr));border:1px solid #dce5df;border-radius:12px;overflow:auto;background:#fff}.wf-week{text-align:center;padding:10px;color:#788b80}.wf-day{min-height:120px;border-top:1px solid #e3eae5;border-right:1px solid #e3eae5;padding:6px}.wf-day.today{background:#e9f3ee}.wf-day.outside{opacity:.45}.wf-date{padding:3px 8px;min-height:28px;border:0;background:none}.wf-icons{display:flex;gap:4px;flex-wrap:wrap;max-height:160px;overflow:auto}.wf-person{position:relative;width:30px;min-height:36px;padding:5px;border:1px solid transparent;background:transparent;border-radius:7px;color:var(--person-color);cursor:grab}.wf-person svg{width:20px;height:24px;fill:currentColor}.wf-person.off{opacity:.45}.wf-person.selected{background:#daeade;border-color:#285e49;opacity:1}.wf-person.pending{outline:1px dashed #b48332}.wf-person small{position:absolute;bottom:-2px;right:-2px;font-size:9px;background:#fff;border-radius:4px;color:#254e3e}.wf-detail,.wf-info{padding:16px;background:#fff;border:1px solid #dce5df;border-radius:12px}.wf-info{display:block;margin:12px 0}.wf-detail{max-height:75vh;overflow:auto;position:sticky;top:12px;align-self:start}.wf-select-list{max-height:220px;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:10px 0}.wf-select-list label{display:flex;gap:8px;align-items:center;padding:7px}.wf-select-list label[hidden]{display:none}.wf-select input[type=search]{width:100%}.wf-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.wf-select input[type=checkbox],.staff-form input[type=checkbox]{width:auto!important;min-height:18px}.wf-select-list input{flex-shrink:0}@media(max-width:1000px){.wf-layout{grid-template-columns:1fr}.wf-detail{position:static;max-height:none}}@media(max-width:650px){.wf-calendar{grid-template-columns:repeat(7,minmax(42px,1fr))}.wf-day{padding:3px;min-height:100px}.wf-person{width:26px;padding:3px}.wf-select-list,.wf-fields{grid-template-columns:1fr}}
+
+.work-dialog.wf-edit-dialog{width:min(760px,calc(100vw - 24px));box-sizing:border-box}
+.wf-edit-dialog .wf-picker,.wf-edit-dialog fieldset{min-width:0}
+.wf-picker-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+.wf-picker-head small,.wf-roster-scroll td small{color:#586d63}
+.wf-picker input[type=search]{box-sizing:border-box;width:100%;margin:0;height:44px;font-size:16px}
+.wf-roster-scroll{max-height:min(32vh,270px);overflow:auto;border:1px solid #d5dfd9;margin-top:6px}
+.wf-roster-scroll table{width:100%;min-width:0;table-layout:fixed;white-space:normal;margin:0}
+.wf-roster-scroll .wf-tick{width:42px}
+.wf-roster-scroll td,.wf-roster-scroll th{padding:6px 7px;overflow-wrap:anywhere;white-space:normal;text-align:left;vertical-align:middle}
+.wf-roster-scroll tr{height:44px}
+.wf-roster-scroll thead th{position:sticky;top:0;z-index:1;background:#edf3ee;color:#355445}
+.wf-roster-scroll td small{display:block;font-variant-numeric:tabular-nums}
+.wf-roster-scroll tbody tr[data-person-name]{cursor:pointer}
+.wf-roster-scroll tr.is-picked td{background:#e7f2eb}
+.wf-roster-scroll tr[hidden]{display:none!important}
+.wf-roster-scroll input[type=checkbox]{width:18px!important;height:18px;min-height:0;margin:0;accent-color:#245c45}
+.wf-edit-dialog .wf-off{padding:0;border:0;margin:12px 0}
+.wf-off legend{padding:0;margin-bottom:6px}
+.wf-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid #a9beb2;border-radius:5px;overflow:hidden}
+.wf-edit-dialog .wf-days label{position:relative;display:block;min-width:0;margin:0;padding:0;cursor:pointer}
+.wf-days label+label{border-inline-start:1px solid #bfcfc5}
+.wf-days input{position:absolute;opacity:0;inset:0;margin:0}
+.wf-days span{display:grid;place-items:center;min-height:44px;color:#365747;background:#fff}
+.wf-days input:checked+span{background:#245c45;color:white;font-weight:700}
+.wf-days input:focus-visible+span{outline:2px solid #5996dc;outline-offset:-3px}
+.wf-range,.wf-edit-dialog .wf-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:end}
+.wf-edit-dialog .wf-fields input,.wf-range input,.wf-edit-dialog .wf-fields select{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
